@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "52383721176",
+    "project_id": "attention-bias-new",
+    "storage_bucket": "attention-bias-new.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52383721176:android:6dae3d7ff45ab8990e59ad",
+        "android_client_info": {
+          "package_name": "com.example.attention_bias"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52383721176-77jk6lbptngir37eivug5blgsppflhqk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.attention_bias",
+            "certificate_hash": "6d1bd963f66dfeae74f4024d2f6724d7cd5247ab"
+          }
+        },
+        {
+          "client_id": "52383721176-5ovjbi99am82q2dodl1csbk4k2rh47ja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTfOpyGFuaTscfCat6lhtM-3uENkmwfvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52383721176-5ovjbi99am82q2dodl1csbk4k2rh47ja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
