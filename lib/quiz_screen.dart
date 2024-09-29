@@ -30,205 +30,69 @@ class _QuizScreenState extends State<QuizScreen> {
 
   List<List<Map<String, String>>> imagePairs = [
     [
-        {"type": "food", "path": "assets/food1.jpg"},
-        {"type": "non-food", "path": "assets/non_food1.jpg"}
+        {"type": "food", "path": "assets/food1.png"},
+        {"type": "non-food", "path": "assets/non_food1.png"}
     ],
     [
-        {"type": "food", "path": "assets/food2.jpg"},
-        {"type": "non-food", "path": "assets/non_food2.jpg"}
+        {"type": "food", "path": "assets/food2.png"},
+        {"type": "non-food", "path": "assets/non_food2.png"}
     ],
     [
-        {"type": "food", "path": "assets/food3.jpg"},
-        {"type": "non-food", "path": "assets/non_food3.jpg"}
+        {"type": "food", "path": "assets/food3.png"},
+        {"type": "non-food", "path": "assets/non_food3.png"}
     ],
     [
-        {"type": "food", "path": "assets/food4.jpg"},
-        {"type": "non-food", "path": "assets/non_food4.jpg"}
+        {"type": "food", "path": "assets/food4.png"},
+        {"type": "non-food", "path": "assets/non_food4.png"}
     ],
     [
-        {"type": "food", "path": "assets/food5.jpg"},
-        {"type": "non-food", "path": "assets/non_food5.jpg"}
+        {"type": "food", "path": "assets/food5.png"},
+        {"type": "non-food", "path": "assets/non_food5.png"}
     ],
     [
-        {"type": "food", "path": "assets/food6.jpg"},
-        {"type": "non-food", "path": "assets/non_food6.jpg"}
+        {"type": "food", "path": "assets/food6.png"},
+        {"type": "non-food", "path": "assets/non_food6.png"}
     ],
     [
-        {"type": "food", "path": "assets/food7.jpg"},
-        {"type": "non-food", "path": "assets/non_food7.jpg"}
+        {"type": "food", "path": "assets/food7.png"},
+        {"type": "non-food", "path": "assets/non_food7.png"}
     ],
     [
-        {"type": "food", "path": "assets/food8.jpg"},
-        {"type": "non-food", "path": "assets/non_food8.jpg"}
+        {"type": "food", "path": "assets/food8.png"},
+        {"type": "non-food", "path": "assets/non_food8.png"}
     ],
     [
-        {"type": "food", "path": "assets/food9.jpg"},
-        {"type": "non-food", "path": "assets/non_food9.jpg"}
+        {"type": "food", "path": "assets/food9.png"},
+        {"type": "non-food", "path": "assets/non_food9.png"}
     ],
     [
-        {"type": "food", "path": "assets/food10.jpg"},
-        {"type": "non-food", "path": "assets/non_food10.jpg"}
+        {"type": "food", "path": "assets/food10.png"},
+        {"type": "non-food", "path": "assets/non_food10.png"}
     ],
     [
-        {"type": "food", "path": "assets/food11.jpg"},
-        {"type": "non-food", "path": "assets/non_food11.jpg"}
+        {"type": "food", "path": "assets/food11.png"},
+        {"type": "non-food", "path": "assets/non_food11.png"}
     ],
     [
-        {"type": "food", "path": "assets/food12.jpg"},
-        {"type": "non-food", "path": "assets/non_food12.jpg"}
+        {"type": "food", "path": "assets/food12.png"},
+        {"type": "non-food", "path": "assets/non_food12.png"}
     ],
     [
-        {"type": "food", "path": "assets/food13.jpg"},
-        {"type": "non-food", "path": "assets/non_food13.jpg"}
+        {"type": "food", "path": "assets/food13.png"},
+        {"type": "non-food", "path": "assets/non_food13.png"}
     ],
     [
-        {"type": "food", "path": "assets/food14.jpg"},
-        {"type": "non-food", "path": "assets/non_food14.jpg"}
+        {"type": "food", "path": "assets/food14.png"},
+        {"type": "non-food", "path": "assets/non_food14.png"}
     ],
     [
-        {"type": "food", "path": "assets/food15.jpg"},
-        {"type": "non-food", "path": "assets/non_food15.jpg"}
+        {"type": "food", "path": "assets/food15.png"},
+        {"type": "non-food", "path": "assets/non_food15.png"}
     ],
     [
-        {"type": "food", "path": "assets/food16.jpg"},
-        {"type": "non-food", "path": "assets/non_food16.jpg"}
+        {"type": "food", "path": "assets/food16.png"},
+        {"type": "non-food", "path": "assets/non_food16.png"}
     ],
-    [
-        {"type": "food", "path": "assets/food17.jpg"},
-        {"type": "non-food", "path": "assets/non_food17.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food18.jpg"},
-        {"type": "non-food", "path": "assets/non_food18.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food19.jpg"},
-        {"type": "non-food", "path": "assets/non_food19.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food20.jpg"},
-        {"type": "non-food", "path": "assets/non_food20.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food21.jpg"},
-        {"type": "non-food", "path": "assets/non_food21.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food22.jpg"},
-        {"type": "non-food", "path": "assets/non_food22.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food23.jpg"},
-        {"type": "non-food", "path": "assets/non_food23.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food24.jpg"},
-        {"type": "non-food", "path": "assets/non_food24.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food25.jpg"},
-        {"type": "non-food", "path": "assets/non_food25.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food26.jpg"},
-        {"type": "non-food", "path": "assets/non_food26.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food27.jpg"},
-        {"type": "non-food", "path": "assets/non_food27.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food28.jpg"},
-        {"type": "non-food", "path": "assets/non_food28.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food29.jpg"},
-        {"type": "non-food", "path": "assets/non_food29.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food30.jpg"},
-        {"type": "non-food", "path": "assets/non_food30.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food31.jpg"},
-        {"type": "non-food", "path": "assets/non_food31.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food32.jpg"},
-        {"type": "non-food", "path": "assets/non_food32.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food33.jpg"},
-        {"type": "non-food", "path": "assets/non_food33.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food34.jpg"},
-        {"type": "non-food", "path": "assets/non_food34.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food35.jpg"},
-        {"type": "non-food", "path": "assets/non_food35.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food36.jpg"},
-        {"type": "non-food", "path": "assets/non_food36.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food37.jpg"},
-        {"type": "non-food", "path": "assets/non_food37.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food38.jpg"},
-        {"type": "non-food", "path": "assets/non_food38.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food39.jpg"},
-        {"type": "non-food", "path": "assets/non_food39.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food40.jpg"},
-        {"type": "non-food", "path": "assets/non_food40.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food41.jpg"},
-        {"type": "non-food", "path": "assets/non_food41.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food42.jpg"},
-        {"type": "non-food", "path": "assets/non_food42.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food43.jpg"},
-        {"type": "non-food", "path": "assets/non_food43.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food44.jpg"},
-        {"type": "non-food", "path": "assets/non_food44.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food45.jpg"},
-        {"type": "non-food", "path": "assets/non_food45.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food46.jpg"},
-        {"type": "non-food", "path": "assets/non_food46.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food47.jpg"},
-        {"type": "non-food", "path": "assets/non_food47.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food48.jpg"},
-        {"type": "non-food", "path": "assets/non_food48.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food49.jpg"},
-        {"type": "non-food", "path": "assets/non_food49.jpg"}
-    ],
-    [
-        {"type": "food", "path": "assets/food50.jpg"},
-        {"type": "non-food", "path": "assets/non_food50.jpg"}
-    ]
 ];
 
 
