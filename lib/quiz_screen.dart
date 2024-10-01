@@ -25,10 +25,9 @@ class QuizScreen extends StatefulWidget {
   @override
   _QuizScreenState createState() => _QuizScreenState();
 }
-
 class _QuizScreenState extends State<QuizScreen> {
-
-  List<List<Map<String, String>>> imagePairs = [
+  List<List<Map<String, String>>> originalImagePairs = [
+    // The original list of 16 image pairs
     [
         {"type": "food", "path": "assets/food1.png"},
         {"type": "non-food", "path": "assets/non_food1.png"}
@@ -93,11 +92,15 @@ class _QuizScreenState extends State<QuizScreen> {
         {"type": "food", "path": "assets/food16.png"},
         {"type": "non-food", "path": "assets/non_food16.png"}
     ],
-];
+  ];
 
+  List<List<Map<String, String>>> imagePairs = []; // This will hold shuffled pairs for each loop
 
+  int currentQuestion = 1;
+  int totalQuestions = 0; // Total questions counter
+  int maxQuestions = 50; // 50 questions for the full test
+  int demoMaxQuestions = 10; // 10 questions for demo mode
 
-  int currentQuestion = 0;
   int correctSameSide = 0;
   int correctOppositeSide = 0;
   int errorsSameSide = 0;
@@ -111,19 +114,25 @@ class _QuizScreenState extends State<QuizScreen> {
   List<int> reactionTimesSameSide = [];
   List<int> reactionTimesOppositeSide = [];
 
-  FocusNode _focusNode = FocusNode(); // To focus on keyboard events
+  FocusNode _focusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    imagePairs.shuffle();
-    if (widget.demoMode) {
-      imagePairs = imagePairs.take(5).toList();
-    }
-    startQuiz();
 
-    // Request focus to capture keyboard input
-    _focusNode.requestFocus();
+    if (widget.demoMode) {
+      // Limit to 10 questions in demo mode
+      imagePairs = List.from(originalImagePairs);
+      imagePairs.shuffle();
+      imagePairs = imagePairs.take(demoMaxQuestions).toList(); // Demo mode with 10 questions
+    } else {
+      // Normal mode with 50 questions
+      imagePairs = List.from(originalImagePairs);
+      imagePairs.shuffle(); // Shuffle at the start
+    }
+
+    startQuiz();
+    _focusNode.requestFocus(); // Focus on keyboard input
   }
 
   void startQuiz() {
@@ -159,195 +168,168 @@ class _QuizScreenState extends State<QuizScreen> {
       reactionTimesOppositeSide.add(reactionTime);
     }
 
-    if (currentQuestion < imagePairs.length - 1) {
-      currentQuestion++;
-      startQuiz();
+    // Increment total questions counter
+    totalQuestions++;
+
+    // If totalQuestions reaches the max limit (50 for normal mode, 10 for demo), end the test
+    if (totalQuestions >= (widget.demoMode ? demoMaxQuestions : maxQuestions)) {
+      showFinalReport(); // End the test after 50 questions (or 10 in demo mode)
     } else {
-      if (!widget.demoMode) {
-        showFinalReport();
+      // Move to the next question, shuffle and reset after every loop of 16
+      if (currentQuestion < imagePairs.length - 1) {
+        currentQuestion++;
       } else {
-        Navigator.pop(context);
+        currentQuestion = 0; // Reset the question index after 16 pairs
+        imagePairs.shuffle(); // Reshuffle for the next loop
       }
+      startQuiz();
     }
   }
-void showFinalReport() {
-  final meanSameSide = reactionTimesSameSide.isNotEmpty
-      ? (reactionTimesSameSide.reduce((a, b) => a + b) / reactionTimesSameSide.length).toDouble()
-      : 0.0;
 
-  final meanOppositeSide = reactionTimesOppositeSide.isNotEmpty
-      ? (reactionTimesOppositeSide.reduce((a, b) => a + b) / reactionTimesOppositeSide.length).toDouble()
-      : 0.0;
+  void showFinalReport() {
 
-  final attentionBias = (meanSameSide - meanOppositeSide).abs();
+    if (widget.demoMode) {
+      // End the demo mode test and return to the previous screen
+      Navigator.pop(context); // Simply pop the current screen without showing a report
+      return;
+    }
+    
+    final meanSameSide = reactionTimesSameSide.isNotEmpty
+        ? (reactionTimesSameSide.reduce((a, b) => a + b) / reactionTimesSameSide.length).toDouble()
+        : 0.0;
 
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(
-      builder: (context) => ReportScreen(
-        meanSameSide: meanSameSide,
-        meanOppositeSide: meanOppositeSide,
-        attentionBias: attentionBias,
-        errorsSameSide: errorsSameSide,
-        errorsOppositeSide: errorsOppositeSide,
-        name: widget.name,  // Pass the user name to ReportScreen
-        age: widget.age,    // Pass the user age
-        gender: widget.gender, // Pass the gender
-        email: widget.email,   // Pass the email
-        date: widget.date,    // Pass the date
+    final meanOppositeSide = reactionTimesOppositeSide.isNotEmpty
+        ? (reactionTimesOppositeSide.reduce((a, b) => a + b) / reactionTimesOppositeSide.length).toDouble()
+        : 0.0;
+
+    final attentionBias = (meanSameSide - meanOppositeSide).abs();
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ReportScreen(
+          meanSameSide: meanSameSide,
+          meanOppositeSide: meanOppositeSide,
+          attentionBias: attentionBias,
+          errorsSameSide: errorsSameSide,
+          errorsOppositeSide: errorsOppositeSide,
+          name: widget.name,
+          age: widget.age,
+          gender: widget.gender,
+          email: widget.email,
+          date: widget.date,
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   void _handleKeyPress(RawKeyEvent event) {
     if (event is RawKeyDownEvent) {
       if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
-        handleResponse(true); // Left arrow key pressed
+        handleResponse(true);
       } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
-        handleResponse(false); // Right arrow key pressed
+        handleResponse(false);
       }
     }
   }
-@override
-Widget build(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  return Scaffold(
-    body: RawKeyboardListener(
-      focusNode: _focusNode, // Focus node to capture keyboard events
-      onKey: _handleKeyPress, // Function to handle key press events
-      autofocus: true, // Automatically focus on the widget for keyboard events
-      child: GestureDetector(
-        behavior: HitTestBehavior.translucent, // Ensures the entire area captures taps
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: Column(
-                        children: [
-                          // Show the images before or after the 2 seconds depending on the state
-                          showImages
-                              ? Image.asset(
-                                  imagePairs[currentQuestion][0]['path']!, // Initial image on the left
-                                  width: 150,
-                                  height: 150,
-                                  fit: BoxFit.contain,
-                                )
-                              : (showFinalImage && isFoodOnLeft)
-                                  ? Image.asset(
-                                      imagePairs[currentQuestion][0]['path']!, // Final image on the left
-                                      width: 150,
-                                      height: 150,
-                                      fit: BoxFit.contain,
-                                    )
-                                  : SizedBox(
-                                      width: 150,
-                                      height: 150,
-                                    ), // Placeholder when no image is shown
-                          SizedBox(height: 20), // Add margin-top to the arrow button
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black, width: 2), // Black border
-                              borderRadius: BorderRadius.circular(5), // Optional: rounded corners
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: RawKeyboardListener(
+        focusNode: _focusNode,
+        onKey: _handleKeyPress,
+        autofocus: true,
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Column(
+                          children: [
+                            showImages
+                                ? Image.asset(
+                                    imagePairs[currentQuestion][0]['path']!,
+                                    width: 150,
+                                    height: 150,
+                                    fit: BoxFit.contain,
+                                  )
+                                : (showFinalImage && isFoodOnLeft)
+                                    ? Image.asset(
+                                        imagePairs[currentQuestion][0]['path']!,
+                                        width: 150,
+                                        height: 150,
+                                        fit: BoxFit.contain,
+                                      )
+                                    : SizedBox(
+                                        width: 150,
+                                        height: 150,
+                                      ),
+                            SizedBox(height: 20),
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black, width: 2),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: IconButton(
+                                icon: Icon(Icons.arrow_left, size: 50),
+                                onPressed: () => handleResponse(true),
+                              ),
                             ),
-                            child: IconButton(
-                              icon: Icon(Icons.arrow_left, size: 50),
-                              onPressed: () => handleResponse(true), // Left arrow button
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: Column(
-                        children: [
-                          // Show the images before or after the 2 seconds depending on the state
-                          showImages
-                              ? Image.asset(
-                                  imagePairs[currentQuestion][1]['path']!, // Initial image on the right
-                                  width: 150,
-                                  height: 150,
-                                  fit: BoxFit.contain,
-                                )
-                              : (showFinalImage && !isFoodOnLeft)
-                                  ? Image.asset(
-                                      imagePairs[currentQuestion][0]['path']!, // Final image on the right
-                                      width: 150,
-                                      height: 150,
-                                      fit: BoxFit.contain,
-                                    )
-                                  : SizedBox(
-                                      width: 150,
-                                      height: 150,
-                                    ), // Placeholder when no image is shown
-                          SizedBox(height: 20), // Add margin-top to the arrow button
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black, width: 2), // Black border
-                              borderRadius: BorderRadius.circular(5), // Optional: rounded corners
+                    Expanded(
+                      child: Center(
+                        child: Column(
+                          children: [
+                            showImages
+                                ? Image.asset(
+                                    imagePairs[currentQuestion][1]['path']!,
+                                    width: 150,
+                                    height: 150,
+                                    fit: BoxFit.contain,
+                                  )
+                                : (showFinalImage && !isFoodOnLeft)
+                                    ? Image.asset(
+                                        imagePairs[currentQuestion][1]['path']!,
+                                        width: 150,
+                                        height: 150,
+                                        fit: BoxFit.contain,
+                                      )
+                                    : SizedBox(
+                                        width: 150,
+                                        height: 150,
+                                      ),
+                            SizedBox(height: 20),
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black, width: 2),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: IconButton(
+                                icon: Icon(Icons.arrow_right, size: 50),
+                                onPressed: () => handleResponse(false),
+                              ),
                             ),
-                            child: IconButton(
-                              icon: Icon(Icons.arrow_right, size: 50),
-                              onPressed: () => handleResponse(false), // Right arrow button
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
-}
-
-  void onScreenTap(TapUpDetails details) {
-  if (!showFinalImage) return; // Ensure that images are being displayed
-
-  final tapPosition = details.globalPosition.dx;
-  final screenWidth = MediaQuery.of(context).size.width;
-
-  final reactionTime = DateTime.now().difference(startTime!).inMilliseconds;
-
-  if (tapPosition <= screenWidth / 2) {
-    // Left side tapped
-    if (isFoodOnLeft) {
-      correctSameSide++;
-      reactionTimesSameSide.add(reactionTime);
-    } else {
-      errorsOppositeSide++;
-      reactionTimesOppositeSide.add(reactionTime);
-    }
-  } else {
-    // Right side tapped
-    if (!isFoodOnLeft) {
-      correctSameSide++;
-      reactionTimesSameSide.add(reactionTime);
-    } else {
-      errorsOppositeSide++;
-      reactionTimesOppositeSide.add(reactionTime);
-    }
+    );
   }
-
-  if (currentQuestion < imagePairs.length - 1) {
-    currentQuestion++;
-    startQuiz();
-  } else {
-    if (!widget.demoMode) {
-      showFinalReport();
-    } else {
-      Navigator.pop(context); // Return to home screen in demo mode
-    }
-  }
-}
 }
