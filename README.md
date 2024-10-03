@@ -1,16 +1,33 @@
-# attention_bias
+# Flutter Application
 
-A new Flutter project.
+This is a Flutter application that includes a signup feature, a math quiz, and research-related functionalities.
 
-## Getting Started
+## Features
+- **Sign-Up Screen**: Allows users to sign up using email and password, with Firebase authentication integration.
+- **Math Quiz**: A simple math quiz where users can answer multiple-choice questions, and their response times are tracked.
+- **Privacy Policies & Guidelines**: Users are required to accept privacy policies and guidelines before signing up.
+  
+## Installation
+To run this Flutter application locally, follow these steps:
 
-This project is a starting point for a Flutter application.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/your-repo-name.git
 
-A few resources to get you started if this is your first Flutter project:
+2. **Navigate to the project directory**:
+   cd your-repo-name
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. **Install dependencies**:
+   flutter pub get
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. **Run the app: Start the app on an emulator or connected device**:
+   flutter run
+
+
+**Technologies Used**
+Flutter: Framework for building the app.
+Firebase: For authentication.
+
+
+**Privacy Policy & Guidelines**
+By using this app, you agree to the privacy policy and guidelines. Data collected during app usage may be used for research purposes. Your data will not be shared with third parties without your consent.

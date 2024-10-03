@@ -35,17 +35,24 @@ class LandingPage extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
+                              fontWeight: FontWeight.w500
                             ),),
-                            Text("Attention Bias", 
+                            Text("Attention Bias Test", 
                             style: TextStyle(
                               color: Color(0xFF2D87FF),
-                              fontSize: 22,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700
+                            ),),
+                            Text("Version 1.0", 
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
                               fontWeight: FontWeight.w500
                             ),)
                           ],
                         ),
                         SizedBox(height: size.height*0.07,),
-                     Image.asset("assets/doctor1.png", 
+                     Image.asset("assets/brain.png", 
                      height: size.height*0.4,),
                     
                     SizedBox(height: size.height*0.07,),

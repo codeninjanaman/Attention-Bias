@@ -83,6 +83,7 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
   ];
 
 
+
   int currentQuestion = 0;
   int correctResponses = 0;
   int incorrectResponses = 0;
@@ -194,66 +195,66 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
       }
     }
   }
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: RawKeyboardListener(
-        focusNode: _focusNode,
-        onKey: _handleKeyPress,
-        autofocus: true,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Display question or options
-              if (showQuestion)
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 0.0),
-                  child: Text(
-                    questions[currentQuestion]['question'],
-                    style: TextStyle(fontSize: 32),
-                  ),
-                )
-              else
-                Row(
-                  children: [
-                    // Left-side answer option
-                    Expanded(
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Text(
-                              isCorrectOnLeft
-                                  ? '${questions[currentQuestion]['options']['A']}'
-                                  : '${questions[currentQuestion]['options']['B']}',
-                              style: TextStyle(fontSize: 32),
-                            ),
-                            SizedBox(height: 0),
-                          ],
-                        ),
-                      ),
-                    ),
-                    // Right-side answer option
-                    Expanded(
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Text(
-                              !isCorrectOnLeft
-                                  ? '${questions[currentQuestion]['options']['A']}'
-                                  : '${questions[currentQuestion]['options']['B']}',
-                              style: TextStyle(fontSize: 32),
-                            ),
-                            SizedBox(height: 0),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+@override
+Widget build(BuildContext context) {
+  Size size = MediaQuery.of(context).size;
+  return Scaffold(
+    body: RawKeyboardListener(
+      focusNode: _focusNode,
+      onKey: _handleKeyPress,
+      autofocus: true,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Display question or options
+            if (showQuestion)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 90),
+                child: Text(
+                  questions[currentQuestion]['question'],
+                  style: TextStyle(fontSize: 40, letterSpacing: 4.0),
                 ),
-              // Arrow buttons - Always visible
+              )
+            else
+              Row(
+                children: [
+                  // Left-side answer option
+                  Expanded(
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Text(
+                            isCorrectOnLeft
+                                ? '${questions[currentQuestion]['options']['A']}'
+                                : '${questions[currentQuestion]['options']['B']}',
+                            style: TextStyle(fontSize: 40),
+                          ),
+                          SizedBox(height: 0),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // Right-side answer option
+                  Expanded(
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Text(
+                            !isCorrectOnLeft
+                                ? '${questions[currentQuestion]['options']['A']}'
+                                : '${questions[currentQuestion]['options']['B']}',
+                            style: TextStyle(fontSize: 40),
+                          ),
+                          SizedBox(height: 0),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            // Arrow buttons - Visible only when the options are shown
+            if (showOptions) // Conditionally display the arrow buttons
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: Row(
@@ -295,10 +296,11 @@ class _MathQuizScreenState extends State<MathQuizScreen> {
                   ],
                 ),
               ),
-            ],
-          ),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }

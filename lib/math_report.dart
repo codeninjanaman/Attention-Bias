@@ -214,9 +214,12 @@ Future<void> _exportToExcel() async {
                     ],
                   ),
                 ),
-                Text(
+                Center(
+                  child: Column(
+                    children: [
+                      Text(
                   'Mean Reaction Time for Correct Response:',
-                  style: TextStyle(color: Colors.black38),
+                  style: TextStyle(color: Colors.black),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
@@ -227,7 +230,7 @@ Future<void> _exportToExcel() async {
                 ),
                 Text(
                   'Mean Reaction Time for Incorrect Response:',
-                  style: TextStyle(color: Colors.black38),
+                  style: TextStyle(color: Colors.black),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
@@ -238,7 +241,7 @@ Future<void> _exportToExcel() async {
                 ),
                 Text(
                   'Correct Responses:',
-                  style: TextStyle(color: Colors.black38),
+                  style: TextStyle(color: Colors.black),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
@@ -249,7 +252,7 @@ Future<void> _exportToExcel() async {
                 ),
                 Text(
                   'Incorrect Responses:',
-                  style: TextStyle(color: Colors.black38),
+                  style: TextStyle(color: Colors.black),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
@@ -260,7 +263,7 @@ Future<void> _exportToExcel() async {
                 ),
                 Text(
                   'Attention Bias:',
-                  style: TextStyle(color: Colors.black38),
+                  style: TextStyle(color: Colors.black),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
@@ -269,6 +272,10 @@ Future<void> _exportToExcel() async {
                     style: TextStyle(color: Colors.red),
                   ),
                 ),
+                    ],
+                  ),
+                ),
+                
                 SizedBox(height: 20),
                 Align(
                   alignment: Alignment.center,

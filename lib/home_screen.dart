@@ -248,7 +248,7 @@ Container(
             child: Text(
               isExpanded ? "Welcome to the Attention Bias Paradigm task. In this task, you will be presented with a series of stimuli on the screen. Your task is to carefully attend to these stimuli and respond based on the instructions provided." 
                          : "Welcome to the Attention Bias Paradigm task. In this task, you will be presented with a series of stimuli on the screen. Your task is to carefully attend to these stimuli and respond based on the instructions provided",
-              style: const TextStyle(color: Colors.white, fontSize: 11),
+              style: const TextStyle(color: Colors.white, fontSize: 12),
             ),
           ),
 
@@ -259,15 +259,15 @@ Container(
             ),
             const Text(
               "1. You will see a series of images presented on the screen.",
-              style: TextStyle(color: Colors.white, fontSize: 11),
+              style: TextStyle(color: Colors.white, fontSize: 12),
             ),
             const Text(
               "2. One of these images will be food, while other will be non-food.",
-              style: TextStyle(color: Colors.white, fontSize: 11),
+              style: TextStyle(color: Colors.white, fontSize: 12),
             ),
             const Text(
               "3. Your task is to quickly and accurately indicate the orientation of food image.",
-              style: TextStyle(color: Colors.white, fontSize: 11),
+              style: TextStyle(color: Colors.white, fontSize: 12),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 8.0),
@@ -287,14 +287,14 @@ Container(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Text(
                 '• For each image, you will need to judge the orientation of the food image. ',
-                style: TextStyle(color: Colors.white, fontSize: 11),
+                style: TextStyle(color: Colors.white, fontSize: 12),
               ),
             ),
              const Padding(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Text(
                 '• After making your judgment on the orientation of the food image, a probe (food) will appear on the screen, either in the location of the food image or the non-food image. ',
-                style: TextStyle(color: Colors.white, fontSize: 11),
+                style: TextStyle(color: Colors.white, fontSize: 12),
               ),
             ),
             const Padding(
@@ -304,11 +304,11 @@ Container(
                 children: [
                   Text(
                     '• If the food image is at LEFT, tap the left side of the screen.',
-                    style: TextStyle(color: Colors.white, fontSize: 11),
+                    style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                   Text(
                     '• If the food image is at RIGHT, tap the right side of the screen.',
-                    style: TextStyle(color: Colors.white, fontSize: 11),
+                    style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
 
                   Padding(
@@ -319,7 +319,7 @@ Container(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Text('Respond as quickly and accurately as possible. Do not deliberate for too long on each image. Your initial response is important.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
             ),
             Padding(
@@ -330,7 +330,7 @@ Container(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Text('The image will then appear for a predetermined duration.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
             ),
             Padding(
@@ -341,7 +341,7 @@ Container(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Text('After responding, you will receive feedback on the accuracy of your response. Use this feedback to adjust your performance in subsequent trials.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
             )
                 ],
@@ -411,7 +411,7 @@ Container(
             child: Text(
               isExpanded ? "Welcome to the Attention Bias Paradigm task. In this task, you will be presented with a series of math questions followed by two options on the screen. Your task is to carefully attend to these stimuli and respond based on the instructions provided." 
                          : "Welcome to the Attention Bias Paradigm task. In this task, you will be presented with a series of math questions followed by two options on the screen. Your task is to carefully attend to these stimuli and respond based on the instructions provided.",
-              style: const TextStyle(color: Colors.white, fontSize: 11),
+              style: const TextStyle(color: Colors.white, fontSize: 12),
             ),
           ),
 
@@ -422,11 +422,11 @@ Container(
             ),
             const Text(
               "1. You will see a series of math questions presented on the screen.",
-              style: TextStyle(color: Colors.white, fontSize: 11),
+              style: TextStyle(color: Colors.white, fontSize: 12),
             ),
             const Text(
               "2. Following each question, you will be presented with two options on the screen.",
-              style: TextStyle(color: Colors.white, fontSize: 11),
+              style: TextStyle(color: Colors.white, fontSize: 12),
             ),
             
             const Padding(
@@ -447,7 +447,7 @@ Container(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Text(
                 '• For each trial, a math question (multiplication, subtraction, addition, or division) will be presented.',
-                style: TextStyle(color: Colors.white, fontSize: 11),
+                style: TextStyle(color: Colors.white, fontSize: 12),
               ),
             ),
             const Padding(
@@ -457,7 +457,7 @@ Container(
                 children: [
                   Text(
                     '• Solve the math question mentally.',
-                    style: TextStyle(color: Colors.white, fontSize: 11),
+                    style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                   
 
@@ -469,17 +469,17 @@ Container(
               padding: EdgeInsets.only(bottom: 0.0),
               child: Text('• After solving the math question, two probe options (left and right) will appear on the screen.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
             ),
 
             Text('• If you think the correct answer to the math question is associated with the left option, tap the left side of the screen.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
             Text('• If you think the correct answer to the math question is associated with the right option, tap the right side of the screen.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
             Padding(
               padding: EdgeInsets.symmetric(vertical:  8.0),
@@ -489,12 +489,12 @@ Container(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Text('• Respond as quickly and accurately as possible.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
             ),
             Text('• Do not deliberate for too long on each question. Your initial response is important.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 8.0),
@@ -504,12 +504,12 @@ Container(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Text('• The math question will then appear for a predetermined duration.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
             ),
             Text('• After viewing the math question, you will have a brief response window to make your judgment.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
 
               Padding(
@@ -521,12 +521,12 @@ Container(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Text('• After responding, you will receive feedback on the accuracy of your response.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
             ),
                Text('• Use this feedback to adjust your performance in subsequent trials.', style: TextStyle(
                 color: Colors.white,
-                fontSize: 11
+                fontSize: 12
               )),
           
                 ],
