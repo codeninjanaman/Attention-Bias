@@ -15,12 +15,15 @@ To run this Flutter application locally, follow these steps:
    git clone https://github.com/codeninjanaman/Attention-Bias.git
 
 2. **Navigate to the project directory**:
+   ```bash
    cd your-repo-name
 
 3. **Install dependencies**:
+   ```bash
    flutter pub get
 
 4. **Run the app: Start the app on an emulator or connected device**:
+   ```bash
    flutter run
 
 
