@@ -36,3 +36,8 @@ For authentication.
 
 ## Privacy Policy & Guidelines
 By using this app, you agree to the privacy policy and guidelines. Data collected during app usage may be used for research purposes. Your data will not be shared with third parties without your consent.
+
+## Developer Contact
+   ```bash
+   namuv7@gmail.com
+
