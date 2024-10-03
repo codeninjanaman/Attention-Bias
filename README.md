@@ -24,10 +24,12 @@ To run this Flutter application locally, follow these steps:
    flutter run
 
 
-**Technologies Used**
-Flutter: Framework for building the app.
-Firebase: For authentication.
+## Technologies Used
+**Flutter**: 
+Framework for building the app.
+**Firebase**:
+For authentication.
 
 
-**Privacy Policy & Guidelines**
+## Privacy Policy & Guidelines
 By using this app, you agree to the privacy policy and guidelines. Data collected during app usage may be used for research purposes. Your data will not be shared with third parties without your consent.
